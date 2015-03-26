@@ -1,0 +1,30 @@
+{
+  "name": "SQSLogger",
+  "version": "1.0.0",
+  "description": "A simple Logger using AWS SQS Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4yopping/SQSLogger.git"
+  },
+  "keywords": [
+    "sqs",
+    "aws",
+    "4yopping",
+    "logs",
+    "logger"
+  ],
+  "author": "Andrés González Aragón @Quantium (www.quantium.com.mx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/4yopping/SQSLogger/issues"
+  },
+  "homepage": "https://github.com/4yopping/SQSLogger",
+  "dependencies": {
+    "aws-sdk": "^2.1.19",
+    "colors": "^1.0.3"
+  }
+}
