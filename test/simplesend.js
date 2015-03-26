@@ -11,16 +11,16 @@ describe ('When you try to create a SQSLogger instance', function () {
     });
     it ('if you set a config should not throw any errors', function (done) {    
         var fn = function fn(){
-            var logger = new SQSLogger({QueueUrl:'https://sqs.us-east-1.amazonaws.com/079577709174/test'});
+            var logger = new SQSLogger({QueueUrl:sqsurl});
         };
         expect(fn).to.not.throw(Error);
         done();
     });
 });
-describe ('When you try to send a message a SQSLogger instance', function () {                       
+describe ('When you try to send a message with SQSLogger instance', function () {                       
     var logger;
     before(function before(done){
-        logger = new SQSLogger({QueueUrl:'https://sqs.us-east-1.amazonaws.com/079577709174/test'});
+        logger = new SQSLogger({QueueUrl:sqsurl});
         return done();
     });
     it ('if you pass an empty string in the message should throw an error', function (done) {    
