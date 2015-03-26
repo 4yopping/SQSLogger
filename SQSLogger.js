@@ -39,6 +39,11 @@ function SQSLogger(config){
     //Send a message to the Queue
     //Accepts a message string and a funcion callback
     this.sendMessage = function sendMessage(message,callback){
+        if(message == null || message == undefined || (typeof message) != "string" || message === ''){
+            var e = new Error('bad message');
+            throw e;
+            return e;
+        }
         var params = Object.create(this.gparams);
         params.MessageBody = message;
         if(this.verbose) console.info('Sending Message',message);
@@ -46,9 +51,9 @@ function SQSLogger(config){
         this.SQS.sendMessage(params, function SQSSendMessage(err, data) {
             //if there is an error emits it
             if(err) {
-                if(this.verbose) console.error('There was an error'.red,error);
+                if(this.verbose) console.error('There was an error'.red,err);
 
-                return this.emit('error',error);
+                return this.emit('error',err);
             }
 
             //if the message was sent succesfully emits the sent with the data

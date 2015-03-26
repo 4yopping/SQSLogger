@@ -2,7 +2,7 @@
   "name": "SQSLogger",
   "version": "1.0.0",
   "description": "A simple Logger using AWS SQS Service",
-  "main": "index.js",
+  "main": "SQSLogger.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test"
   },
@@ -26,5 +26,10 @@
   "dependencies": {
     "aws-sdk": "^2.1.19",
     "colors": "^1.0.3"
+  },
+  "devDependencies": {
+    "chai": "^2.1.2",
+    "mocha": "^2.2.1",
+    "supertest": "^0.15.0"
   }
 }
