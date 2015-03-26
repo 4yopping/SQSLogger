@@ -1,4 +1,6 @@
 # SQSLogger
+
+[![Join the chat at https://gitter.im/4yopping/SQSLogger](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/4yopping/SQSLogger?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A simple Logger using AWS SQS Service
 
 ##Instalation
