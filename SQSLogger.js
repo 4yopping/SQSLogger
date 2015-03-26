@@ -20,6 +20,9 @@ function SQSLogger(config){
     this.region = config.region || 'us-east-1';
     this.delay = config.delaySeconds || 0;
     this.verbose = config.verbose || false;
+    if(process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
+        AWS.config.update({accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
+    }
     this.SQS = new AWS.SQS({apiVersion: this.apiVersion,region:this.region});
 
     if(this.verbose) console.log('Creating Logger');
