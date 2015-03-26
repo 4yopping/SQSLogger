@@ -1,6 +1,6 @@
 {
   "name": "sqs-logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Logger using AWS SQS Service",
   "main": "SQSLogger.js",
   "scripts": {
