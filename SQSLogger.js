@@ -42,13 +42,13 @@ function SQSLogger(config){
     //Send a message to the Queue
     //Accepts a message string and a funcion callback
     this.sendMessage = function sendMessage(message,callback){
-        if(message == null || message == undefined || (typeof message) != "string" || message === ''){
+        if(message == null || message == undefined || message === '' || message.toString != null){
             var e = new Error('bad message');
             throw e;
             return e;
         }
         var params = Object.create(this.gparams);
-        params.MessageBody = message;
+        params.MessageBody = message.toString();
         if(this.verbose) console.info('Sending Message',message);
 
         this.SQS.sendMessage(params, function SQSSendMessage(err, data) {
