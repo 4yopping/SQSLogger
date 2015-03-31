@@ -1,19 +1,20 @@
 # SQSLogger
+
+A simple Logger using AWS SQS Service
+
 [![Join the chat at https://gitter.im/4yopping/SQSLogger](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/4yopping/SQSLogger?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://badge.fury.io/js/sqs-logger.svg)](http://badge.fury.io/js/sqs-logger)
 [![Build Status](https://travis-ci.org/4yopping/SQSLogger.svg)](https://travis-ci.org/4yopping/SQSLogger)
 
-A simple Logger using AWS SQS Service
-
 ##Instalation
 
-
 ````
-npm install SQSLogger --save
+npm install sqs-logger --save
 
 ````
 
 ##Test
+
 ````
 npm test
 ````
@@ -31,6 +32,7 @@ var logger = new SQSLogger({QueueUrl: 'https://sqs.us-east-1.amazonaws.com/00000
 ````
 
 ### Events
+
 Use the **sent** event to receive a response when the log was queued
 ````
 logger.on('sent',function(data){
@@ -44,13 +46,16 @@ logger.on('error',function(err){
   console.error(err);
 });
 ````
+
 ### Send messages
+
 Send a **message**
 ````
 logger.sendMessage('Amazing Message');
 ````
 
 ### Callback
+
 You can use a **callback** too
 ````
 logger.sendMessage('Mocha Test',function callback(data){
@@ -60,11 +65,13 @@ logger.sendMessage('Mocha Test',function callback(data){
 
 
 ##Contributing
+
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 Add unit tests for any new or changed functionality. Lint and test your code.
 
 
 ##Licence
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Andrés González Aragón, 4yopping and all the related trademarks
