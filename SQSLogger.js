@@ -8,14 +8,13 @@ function SQSLogger(config){
     //Checking if config exist and prevent errors if don't.
     config = config || {};
     //Checking if QueueUrl exists, if doesn't an errors throws and stop the execution
-    if(config.QueueUrl == null){
+    if(!config.QueueUrl){
         var e = new Error('queueURL'.yellow + ' must be defined in the config');
         throw e;
         return e;
-    } else {
-        this.queueURL = config.QueueUrl;
     }
     //Setting all variables
+    this.queueURL = config.QueueUrl;
     this.apiVersion = config.apiVersion || 'latest';
     this.region = config.region || 'us-east-1';
     this.delay = config.delaySeconds || 0;
@@ -41,8 +40,8 @@ function SQSLogger(config){
     //sendMessage function
     //Send a message to the Queue
     //Accepts a message string and a funcion callback
-    this.sendMessage = function sendMessage(message,callback){
-        if(message == null || message == undefined || message === '' || message.toString == null || message.toString == undefined){
+    //message can't be null, undefined or an empty string. But can be zero, and any object with toString
+        if((message == null || message == undefined || message === '') || (message.toString == null || message.toString == undefined)){
             var e = new Error('bad message');
             throw e;
             return e;
