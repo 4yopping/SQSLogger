@@ -40,8 +40,8 @@ function SQSLogger(config){
     //sendMessage function
     //Send a message to the Queue
     //Accepts a message string and a funcion callback
-    this.sendMessage = function sendMessage(message,callback){
-        if(typeof message !== 'string' && typeof message !== 'function'){
+    //message can't be null, undefined or an empty string. But can be zero, and any object with toString
+        if((message == null || message == undefined || message === '') || (message.toString == null || message.toString == undefined)){
             var e = new Error('bad message');
             throw e;
             return e;
