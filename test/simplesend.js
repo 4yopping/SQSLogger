@@ -25,7 +25,7 @@ describe ('When you try to send a message with SQSLogger instance', function () 
     });
     it ('if you pass an empty string in the message should throw an error', function (done) {    
         var fn = function fn(){
-            logger.sendMessage('');
+            logger.sendMessage();
         };
         expect(fn).to.throw(Error);
         done();
