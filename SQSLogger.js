@@ -23,6 +23,8 @@ function SQSLogger(config){
         AWS.config.update({accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
     }
     this.SQS = new AWS.SQS({apiVersion: this.apiVersion,region:this.region});
+    //Exposing AWS object for import saving
+    this.AWS = AWS;
 
     if(this.verbose) console.log('Creating Logger');
     if(this.verbose) console.log('QueuUrl'.green,this.queueURL);
