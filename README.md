@@ -21,6 +21,24 @@ npm test
 
 ## Usage
 
+### Setting AWS Credentials
+
+You can use the same authentication methods of [AWS NodeJS SDK](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html)
+
+I certainly recommend to use Credentials from Environment Variables for QA and Staging enviroments and the SDK profiles for local development. 
+
+The environment credentials are __AWS_ACCESS_KEY_ID__ and __process.env.AWS_SECRET_ACCESS_KEY__
+
+Furthermore, you can load a config file using the config loadFromPath function for Production environments:
+
+`````
+AWS.config.loadFromPath('./config.json')
+````
+
+Even though, if you want to hardcode your credentials (Not recommended at all) you can set them using the config update function:
+
+````AWS.config.update({accessKeyId: 'akid', secretAccessKey: 'secret'});````
+
 Create the SQSLogger instance
 ````
 var SQSLogger = require('SQSLogger');
