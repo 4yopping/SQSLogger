@@ -22,7 +22,8 @@ describe ('When you try to send a message with SQSLogger instance', function des
                 }
             }
 
-            logger.sendMessage(object,function callback(data){
+            logger.sendMessage(object,function callback(err, data){
+                expect(err).to.be.a('null');
                 data.ResponseMetadata.should.exist.and.be.a('object');
                 data.ResponseMetadata.RequestId.should.be.a('string').and.exists;
                 data.MD5OfMessageBody.should.exist.and.be.a('string');

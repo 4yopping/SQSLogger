@@ -58,15 +58,15 @@ function SQSLogger(config){
             if(err) {
                 if(this.verbose) console.error('There was an error'.red,err);
 
+                if (callback) return callback(err, null);
                 return this.emit('error',err);
             }
 
             //if the message was sent succesfully emits the sent with the data
             if(this.verbose) console.log('Message succesfully sent'.green);
 
+            if(callback) return callback(null, data);
             this.emit('sent',data);
-            if(callback)callback(data,this);
-            return;
         }.bind(this));
     }
 }
