@@ -38,7 +38,8 @@ describe ('When you try to send a message with SQSLogger instance', function () 
         done();
     });
     it ('if you pass an non-empty string in the message should receive a well formed object', function (done) {
-        logger.sendMessage('Mocha Test',function callback(data){
+        logger.sendMessage('Mocha Test',function callback(err, data){
+            expect(err).to.be.a('null');
             data.ResponseMetadata.should.exist.and.be.a('object');
             data.ResponseMetadata.RequestId.should.be.a('string').and.exists;
             data.MD5OfMessageBody.should.exist.and.be.a('string');
