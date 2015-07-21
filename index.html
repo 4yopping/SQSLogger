@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Sqslogger by 4yopping</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Sqslogger</h1>
+          <h2>A simple Logger using AWS SQS Service</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/4yopping/SQSLogger/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/4yopping/SQSLogger/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/4yopping/SQSLogger" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="sqslogger" class="anchor" href="#sqslogger" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQSLogger</h1>
+
+<p>A simple Logger using AWS SQS Service</p>
+
+<p><a href="https://gitter.im/4yopping/SQSLogger?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/4yopping/SQSLogger"></a>
+<a href="http://badge.fury.io/js/sqs-logger"><img src="https://badge.fury.io/js/sqs-logger.svg" alt="npm version"></a>
+<a href="https://travis-ci.org/4yopping/SQSLogger"><img src="https://travis-ci.org/4yopping/SQSLogger.svg" alt="Build Status"></a>
+<a href="http://inch-ci.org/github/4yopping/SQSLogger"><img src="http://inch-ci.org/github/4yopping/SQSLogger.svg?branch=master" alt="Inline docs"></a></p>
+
+<h2>
+<a id="instalation" class="anchor" href="#instalation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalation</h2>
+
+<pre><code>npm install sqs-logger --save
+
+</code></pre>
+
+<h2>
+<a id="test" class="anchor" href="#test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test</h2>
+
+<pre><code>npm test
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="setting-aws-credentials" class="anchor" href="#setting-aws-credentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting AWS Credentials</h3>
+
+<p>You can use the same authentication methods of <a href="http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html">AWS NodeJS SDK</a></p>
+
+<p>I certainly recommend to use Credentials from Environment Variables for QA and Staging enviroments and the SDK profiles for local development. </p>
+
+<p>The environment credentials are <strong>AWS_ACCESS_KEY_ID</strong> and <strong>process.env.AWS_SECRET_ACCESS_KEY</strong></p>
+
+<p>Furthermore, you can load a config file using the config loadFromPath function for Production environments:</p>
+
+<pre><code>AWS.config.loadFromPath('./config.json')
+</code></pre>
+
+<p>Even though, if you want to hardcode your credentials (Not recommended at all) you can set them using the config update function:</p>
+
+<p><code>AWS.config.update({accessKeyId: 'akid', secretAccessKey: 'secret'});</code></p>
+
+<p>Create the SQSLogger instance</p>
+
+<pre><code>var SQSLogger = require('SQSLogger');
+</code></pre>
+
+<p>Put your Queue URL in the QueueUrl option and pass it to the constructor</p>
+
+<pre><code>var logger = new SQSLogger({QueueUrl: 'https://sqs.us-east-1.amazonaws.com/00000000000/test'});
+</code></pre>
+
+<h3>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h3>
+
+<p>Use the <strong>sent</strong> event to receive a response when the log was queued</p>
+
+<pre><code>logger.on('sent',function(data){
+  dataIsTheAWSResponse(data);  
+});
+
+</code></pre>
+
+<p>Use the <strong>error</strong> event if you want to catch AWS errors</p>
+
+<pre><code>logger.on('error',function(err){
+  console.error(err);
+});
+</code></pre>
+
+<h3>
+<a id="send-messages" class="anchor" href="#send-messages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Send messages</h3>
+
+<p>Send a <strong>message</strong></p>
+
+<pre><code>logger.sendMessage('Amazing Message');
+</code></pre>
+
+<h3>
+<a id="callback" class="anchor" href="#callback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callback</h3>
+
+<p>You can use a <strong>callback</strong> too</p>
+
+<pre><code>logger.sendMessage('Mocha Test',function callback(data){
+  dataIsTheAWSResponse(data);
+});
+</code></pre>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>In lieu of a formal styleguide, take care to maintain the existing coding style.
+Add unit tests for any new or changed functionality. Lint and test your code.</p>
+
+<h2>
+<a id="licence" class="anchor" href="#licence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licence</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2015 Andrés González Aragón, 4yopping and all the related trademarks</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+        </section>
+
+        <footer>
+          Sqslogger is maintained by <a href="https://github.com/4yopping">4yopping</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
