@@ -6,6 +6,8 @@ A simple Logger using AWS SQS Service
 [![npm version](https://badge.fury.io/js/sqs-logger.svg)](http://badge.fury.io/js/sqs-logger)
 [![Build Status](https://travis-ci.org/4yopping/SQSLogger.svg)](https://travis-ci.org/4yopping/SQSLogger)
 [![Inline docs](http://inch-ci.org/github/4yopping/SQSLogger.svg?branch=master)](http://inch-ci.org/github/4yopping/SQSLogger)
+![Dependencies](https://david-dm.org/4yopping/SQSLogger.svg)
+
 ##Instalation
 
 ````
