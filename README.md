@@ -33,7 +33,7 @@ The environment credentials are __AWS_ACCESS_KEY_ID__ and __process.env.AWS_SECR
 
 Furthermore, you can load a config file using the config loadFromPath function for Production environments:
 
-`````
+````
 AWS.config.loadFromPath('./config.json')
 ````
 
