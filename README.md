@@ -8,14 +8,14 @@ A simple Logger using AWS SQS Service
 [![Inline docs](http://inch-ci.org/github/4yopping/SQSLogger.svg?branch=master)](http://inch-ci.org/github/4yopping/SQSLogger)
 ![Dependencies](https://david-dm.org/4yopping/SQSLogger.svg)
 
-##Instalation
+## Instalation
 
 ````
 npm install sqs-logger --save
 
 ````
 
-##Test
+## Test
 
 ````
 npm test
@@ -33,7 +33,7 @@ The environment credentials are __AWS_ACCESS_KEY_ID__ and __process.env.AWS_SECR
 
 Furthermore, you can load a config file using the config loadFromPath function for Production environments:
 
-`````
+````
 AWS.config.loadFromPath('./config.json')
 ````
 
@@ -84,13 +84,13 @@ logger.sendMessage('Mocha Test',function callback(data){
 ````
 
 
-##Contributing
+## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 Add unit tests for any new or changed functionality. Lint and test your code.
 
 
-##Licence
+## Licence
 
 The MIT License (MIT)
 
